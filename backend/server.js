@@ -1,14 +1,19 @@
-const express = require('express');
-const cors = require('cors');
+const express = require("express");
 const app = express();
-const port = 5000;
+const cors = require("cors");
 
+app.use(express.json());
 app.use(cors());
 
-app.get('/api/data', (req, res) => {
-  res.json({ message: 'OLA DE LA BACKEND' });
-});
+const db = require("./models")
+const port = 3001;
 
-app.listen(port, () => {
-  console.log(`Serverul merge pe http://localhost:${port}`);
+// Routers
+const postRouter = require("./routes/Posts");
+app.use("/posts", postRouter);
+
+db.sequelize.sync().then(() => {
+  app.listen(port, () => {
+    console.log("Serverul merge pe http://localhost:${port}");
+  });
 });

@@ -1,61 +1,37 @@
-import { useState } from 'react';
-import reactLogo from './assets/react.svg';
-import viteLogo from '/vite.svg';
 import './App.css';
+import axios from "axios";
+import { useEffect, useState} from "react";
 
-import axios from 'axios';
+interface Post {
+  title: string;
+  postText: string;
+  username: string;
+}
 
 function App() {
-  const [count, setCount] = useState(0);
-  const [data, setData] = useState(''); 
-  const [loading, setLoading] = useState(false); 
 
-  const fetchData = async () => {
-    setLoading(true); 
+  const [listOfPosts, setListOfPosts] = useState<Post[]>([]);
 
-    try {
-      const response = await axios.get('http://localhost:5000/api/data'); 
-      setData(response.data.message); 
-    } catch (error) {
-      console.error('Error fetching data:', error);
-      setData('Failed to fetch data.');
-    } finally {
-      setLoading(false); 
-    }
-  };
-
+  useEffect(() => {
+    axios.get("http://localhost:3001/posts").then((response) => {
+      setListOfPosts(response.data);
+    });
+  }, []);
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      {/* New button to fetch data from the backend */}
-      <div className="fetch-data">
-        <button onClick={fetchData} disabled={loading}>
-          {loading ? 'Loading...' : 'Get Data from Backend'}
-        </button>
-        <p>{data}</p> {/* Display fetched data */}
-      </div>
-    </>
+    <div className="App"> 
+      {listOfPosts.map((value, key) => { 
+        return (
+          <div className="post">
+            <div className="title"> {value.title} </div>
+            <div className="body"> {value.postText}</div>
+            <div className="footer"> {value.username}</div>
+          </div>
+        );
+      })}
+    </div>
   );
+
 }
 
 export default App;
