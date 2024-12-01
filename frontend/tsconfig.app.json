@@ -15,6 +15,9 @@
     "noEmit": true,
     "jsx": "react-jsx",
 
+    /* Enable JavaScript imports in TypeScript */
+    "allowJs": true,  // Allow JavaScript files to be imported
+
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,

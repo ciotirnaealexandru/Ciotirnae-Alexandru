@@ -14,6 +14,6 @@ app.use("/posts", postRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
-    console.log("Serverul merge pe http://localhost:${port}");
+    console.log("Serverul merge pe http://localhost:3001");
   });
 });
