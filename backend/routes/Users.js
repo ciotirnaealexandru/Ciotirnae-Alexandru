@@ -2,33 +2,35 @@ const express = require("express");
 const router = express.Router();
 const { Users } = require("../models");
 const bcrypt = require("bcrypt");
-
-router.post("/", async (req, res) => {
-  const { username, password } = req.body;
-  bcrypt.hash(password, 10).then((hash) => {
-    Users.create({
-      username: username,
-      password: hash,
-    });
-    res.json("SUCCESS");
-  });
-});
+const { sign } = require("jsonwebtoken");
 
 router.post("/login", async (request, response) => {
-    const { username, password } = request.body;
-    const user = await Users.findOne( { where: { username: username }});
+  const { username, password } = request.body;
 
-    if (user) {
-        bcrypt.compare(password, user.password).then((same) => {
-            if (!same) {
-                return response.json({ erorr: "Wrong username or password" });
-            }
-            
-            return response.json("Login successful");
-        });
-    } else {
-        return response.json({ error: "User does not exist" });
+  try {
+    const user = await Users.findOne({ where: { username } });
+
+    if (!user) {
+      return response.status(404).json({ error: "User does not exist" });
     }
+
+    const match = await bcrypt.compare(password, user.password);
+    
+    if (!match) {
+      return response.status(401).json({ error: "Wrong username or password" });
+    }
+
+    const accessToken = sign(
+      { username: user.username, id: user.id },
+      "importantsecret" 
+    );
+
+    return response.json({ token: accessToken });
+
+  } catch (error) {
+    console.error("Error during login:", error);
+    return response.status(500).json({ error: "Internal server error" });
+  }
 });
 
 module.exports = router;
