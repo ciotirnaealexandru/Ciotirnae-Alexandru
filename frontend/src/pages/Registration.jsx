@@ -15,10 +15,16 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-    });
+    axios
+      .post("http://localhost:3001/auth/register", data)
+      .then((response) => {
+        console.log("Registration successful:", response.data);
+      })
+      .catch((error) => {
+        console.error("Registration failed:", error.response.data);
+      });
   };
+  
 
   return (
     <div>
