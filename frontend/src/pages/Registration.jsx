@@ -40,7 +40,7 @@ function Registration() {
             autocomplete="off"
             id="inputCreatePost"
             name="username"
-            placeholder="(Ex. John123...)"
+            placeholder=""
           />
 
           <label>Password: </label>
@@ -50,7 +50,7 @@ function Registration() {
             type="password"
             id="inputCreatePost"
             name="password"
-            placeholder="Your Password..."
+            placeholder=""
           />
 
           <button type="submit"> Sign up</button>

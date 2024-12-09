@@ -5,6 +5,8 @@
     cd backend/
     node server.js
 
+    !! Trebuie instalat MySQL Workbench si generata o baza de date cu numele it_db si parola root. Aplicatia se foloseste de ea pentru a retine datele.
+
     * pentru a porni frontend-ul:
     cd frontend/
     npm run dev
@@ -22,7 +24,7 @@ Backend-ul e facut in NodeJS / Express. Pentru baza de date am folosit MySQL si 
 # Ce am reusit sa fac?
 
 Am facut postarea si vizualizarea de retete:
-    Daca se da click pe Recipes se vad toate retetele postate, de cine e postata si un text asociat. Pe fiecare postare se poate da click pt o vedere detaliata.
+    Daca se da click pe Recipes se vad toate retetele postate, de cine e postata si un text asociat (initial baza de date e goala si trebuie mai intai adaugate retete pentru a se vizualiza). Pe fiecare postare se poate da click pt o vedere detaliata.
     La Add Recipe se pot genera noi postari.
     Toate postarile sunt retinute intr-o baza de date.
 
@@ -30,5 +32,7 @@ Sistemul Login/Register:
     Te poti intregistra cu un cont nou.
     La login te poti loga cu acel cont, va aparea un mesaj de logare. Se va genera un token de acces in spate pentru a tine utilizatorul logat. Totodata, va aparea butonul de logout (care e functional). Daca e apasat se sterge token-ul si se revine la aspectul initial (Login/Register).
     La fel, toti utilizatorii sunt retinuti intr-o baza de date.
+
+Am hardcodat o parte din elemente, de exemplu Contact us section-ul.
 
 Am incercat sa fac un styling cu CSS, dar am intrat in criza de timp..
