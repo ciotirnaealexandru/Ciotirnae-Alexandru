@@ -7,12 +7,10 @@ const validateToken = (req, res, next) => {
 
   try {
     const validToken = verify(accessToken, "importantsecret");
-
-    if (validToken) {
-      return next();
-    }
+    req.user = validToken; 
+    next();
   } catch (err) {
-    return res.json({ error: err });
+    return res.json({ error: "Token is not valid" });
   }
 };
 

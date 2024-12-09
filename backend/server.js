@@ -5,7 +5,7 @@ const cors = require("cors");
 app.use(express.json());
 app.use(cors());
 
-const db = require("./models")
+const db = require("./models");
 const port = 3001;
 
 const postRouter = require("./routes/Posts");
@@ -15,6 +15,6 @@ app.use("/auth", usersRouter);
 
 db.sequelize.sync().then(() => {
   app.listen(port, () => {
-    console.log("Serverul merge pe http://localhost:3001");
+    console.log(`Server running on http://localhost:${port}`);
   });
 });

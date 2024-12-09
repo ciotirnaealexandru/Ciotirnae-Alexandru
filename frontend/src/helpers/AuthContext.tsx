@@ -1,8 +1,13 @@
 import { createContext, Dispatch, SetStateAction } from "react";
 
+interface AuthState {
+  status: boolean;
+  username: string;
+}
+
 interface AuthContextType {
-  authState: boolean;
-  setAuthState: Dispatch<SetStateAction<boolean>>;
+  authState: AuthState;
+  setAuthState: Dispatch<SetStateAction<AuthState>>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(undefined);

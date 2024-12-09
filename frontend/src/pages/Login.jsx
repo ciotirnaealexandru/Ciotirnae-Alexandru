@@ -8,7 +8,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  const {setAuthState} = useContext(AuthContext);
+  const { setAuthState } = useContext(AuthContext);
 
   const login = async () => {
     const data = { username, password };
@@ -21,8 +21,13 @@ function Login() {
         alert(response.data.error);
       } else {
         localStorage.setItem("accessToken", response.data.token);
-        setAuthState(true);
+        setAuthState({
+          status: true,
+          username: response.data.username, 
+        });
+
         navigate("/");
+
       }
     } catch (error) {
       console.error("Login failed:", error);
@@ -31,21 +36,24 @@ function Login() {
   };
 
   return (
-    <div className="loginContainer">
-      <label>Username:</label>
+    <div className="loginContainer"> Loghează-te,<br/> chiorăie mațele!
+
+      <label><br/>Username:</label>
       <input
         type="text"
+        value={username}
         onChange={(event) => setUsername(event.target.value)}
       />
       <label>Password:</label>
       <input
         type="password"
+        value={password}
         onChange={(event) => setPassword(event.target.value)}
       />
+      <button onClick={login}>Log in</button>
+      <div className="forgot_password">Forgot password</div>
 
-      <button onClick={login}>Login</button>
-      
-      {error && <p style={{ color: "red" }}>{error}</p>} {/* Display error message below form */}
+      {error && <p style={{ color: "red" }}>{error}</p>} {}
     </div>
   );
 }
