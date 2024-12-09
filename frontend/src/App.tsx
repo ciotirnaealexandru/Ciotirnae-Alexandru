@@ -15,6 +15,7 @@ function App() {
     status: false,
     username: "",
   });
+  const rows = "7";
 
   useEffect(() => {
     axios
@@ -52,8 +53,10 @@ function App() {
               </>
             ) : (
               <>
-                <span>Welcome, {authState.username}!</span>
-                <button onClick={logout}> Logout</button>
+              <div className="authLinks">
+                <span>{authState.username}</span>
+                <button className="logout" onClick={logout}>Logout</button>
+              </div>
               </>
             )}
           </div>
@@ -65,6 +68,36 @@ function App() {
             <Route path="/login" element={<Login />} />
           </Routes>
         </Router>
+        <div className="contactUs">
+          <h2>Contact Us</h2>
+          <form>
+            <div className="formRow">
+              <div className="formColumn">
+                <div className="formField">
+                  <label htmlFor="firstName"></label>
+                  <input type="text" id="firstName" name="firstName" placeholder="First name" />
+                </div>
+                <div className="formField">
+                  <label htmlFor="lastName"></label>
+                  <input type="text" id="lastName" name="lastName" placeholder="Last name" />
+                </div>
+                <div className="formField">
+                  <label htmlFor="email"></label>
+                  <input type="email" id="email" name="email" placeholder="Email" />
+                </div>
+              </div>
+              <div className="formColumn">
+                <div className="formField">
+                  <label htmlFor="message"></label>
+                  <textarea id="message" name="message" rows={Number(rows)} placeholder="Message"></textarea>
+                </div>
+              </div>
+            </div>
+            <div className="formSubmit">
+              <button type="submit">Submit</button>
+            </div>
+          </form>
+        </div>
       </AuthContext.Provider>
     </div>
   );

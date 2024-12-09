@@ -33,21 +33,21 @@ function CreatePost() {
         validationSchema={validationSchema}
       >
         <Form className="formContainer">
-          <label>Title: </label>
+          <label>Recipe name: </label>
           <ErrorMessage name="title" component="span" />
           <Field
             autoComplete="off"
             id="inputCreatePost"
             name="title"
-            placeholder="(Ex. Title...)"
+            placeholder=""
           />
-          <label>Post: </label>
+          <label>Description: </label>
           <ErrorMessage name="postText" component="span" />
           <Field
             autoComplete="off"
             id="inputCreatePost"
             name="postText"
-            placeholder="(Ex. Post...)"
+            placeholder=""
           />
           <label>Username: </label>
           <ErrorMessage name="username" component="span" />
@@ -55,10 +55,10 @@ function CreatePost() {
             autoComplete="off"
             id="inputCreatePost"
             name="username"
-            placeholder="(Ex. John123...)"
+            placeholder=""
           />
 
-          <button type="submit">Create Post</button>
+          <button type="submit">Add recipe</button>
         </Form>
       </Formik>
     </div>

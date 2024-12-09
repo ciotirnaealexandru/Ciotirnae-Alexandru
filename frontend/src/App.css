@@ -11,7 +11,6 @@ body {
   background-image: url('./images/background_image.png'); 
   background-size: cover;
   background-position: center;
-  background-repeat: no-repeat;
   margin-top: 50px;
   height: 100vh;
 }
@@ -63,12 +62,20 @@ body {
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
-  font-family: Arial, Helvetica, sans-serif;
-  width: 100vw;
-  height: 70vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  padding-top: 100px;
+  margin-top: 50px;
+  padding: 20px 200px 100px 200px;
+  border-style: solid;
+  background-color: rgb(15, 26, 122);
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
 }
 .formContainer {
   display: flex;
@@ -92,12 +99,13 @@ body {
 }
 
 .formContainer button {
-  margin-top: 15px;
-  height: 40px;
-  border: none;
-  background-color: lightskyblue;
-  border-radius: 5px;
+  background-color: rgb(20, 154, 65);
+  padding: 15px 15px 15px 15px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 0px;
   color: white;
+  margin-left: 150px;
 }
 
 .formContainer button:hover {
@@ -106,7 +114,8 @@ body {
 }
 
 span {
-  color: red;
+  color: white;
+  margin-right: 20px;
 }
 
 /* NAVBAR */
@@ -125,7 +134,8 @@ span {
   position: fixed; 
   top: 0;
   left: 0;
-  z-index: 1000; /* Ensures it stays on top */
+  z-index: 1000;
+  box-shadow: rgba(99, 99, 99, 0.2) ;
 }
 
 .navbar a {
@@ -136,10 +146,11 @@ span {
 }
 
 .navbar .authLinks {
-  margin-left: auto; /* Pushes the Login and Register links to the right */
+  margin-left: auto; 
   display: flex;
   align-items: center;
   margin-right: 50px;
+  font-size: 20px;
 }
 
 .login{
@@ -264,6 +275,7 @@ button {
   color: white;
   text-align: center;
   font-size: 20px;
+  margin-bottom:100px;
 }
 
 .loginContainer input,
@@ -290,4 +302,147 @@ button {
 }
 .loginContainer input {
   border: 2px solid dodgerblue;
+}
+
+/* REGISTRATION */
+
+.registration{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 200px;
+  height: 300px;
+  padding-top: 100px;
+  margin-top: 50px;
+  padding: 20px 200px 20px 200px;
+  border-style: solid;
+  background-color: rgb(15, 26, 122);
+  border-radius: 15px;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  margin-bottom:100px;
+}
+
+.registration button{
+  background-color: rgb(20, 154, 65);
+  padding: 20px 20px 15px 15px;
+  text-align: center;
+  font-size: 20px;
+  line-height: 0px;
+  color: white;
+  margin-left: 150px;
+}
+
+.logout{
+  border-style: solid;
+  background-color: rgb(15, 26, 122);
+  border-radius: 15px;
+  color: white;
+  font-size: 18px;
+  margin: 0px;
+}
+
+span{
+  font-size: 18px;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.App {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.contactUs {
+  width: 100%;
+  padding: 20px;
+  border: 1px solid lightgray;
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 50px;
+  margin-bottom: 0; 
+}
+
+.contactUs h2 {
+  text-align: left;
+  color: rgb(20, 154, 65);
+  margin-bottom: 20px;
+}
+
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.formColumn {
+  flex: 1;
+}
+
+.formField {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.formField label {
+  margin-bottom: 2px;
+  color: rgb(20, 154, 65);
+  font-weight: bold;
+}
+
+.formField input,
+.formField textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+textarea {
+  resize: none;
+}
+
+.formSubmit {
+  margin-top: 10px;
+  text-align: center;
+  margin-left: 190px;
+}
+
+.formSubmit button {
+  width: 150px;
+  height: 40px;
+  background-color: rgb(20, 154, 65);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.formSubmit button:hover {
+  background-color: rgb(20, 154, 65);
+}
+
+.contactUs {
+  padding: 20px;
+  padding-left:150px;
+}
+
+.formField input::placeholder,
+.formField textarea::placeholder {
+  color: rgb(20, 154, 65); /* Make placeholders green */
 }

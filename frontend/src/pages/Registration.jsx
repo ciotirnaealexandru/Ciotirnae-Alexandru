@@ -27,7 +27,7 @@ function Registration() {
   
 
   return (
-    <div>
+    <div className="registration">Hai, fă foamea cu noi!
       <Formik
         initialValues={initialValues}
         onSubmit={onSubmit}
@@ -53,7 +53,7 @@ function Registration() {
             placeholder="Your Password..."
           />
 
-          <button type="submit"> Register</button>
+          <button type="submit"> Sign up</button>
         </Form>
       </Formik>
     </div>
